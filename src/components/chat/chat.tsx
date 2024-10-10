@@ -1,6 +1,6 @@
 import EmojiPicker from "emoji-picker-react";
 import styles from "./style.module.css";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type EmojiObj = {
   emoji: string;
@@ -9,6 +9,12 @@ type EmojiObj = {
 const Chat = () => {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
+
+  const endRef = useRef<HTMLDivElement | null>(null);  
+
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, []);
 
   const handleEmoji = (e: EmojiObj) => {
     setText((prev) => prev + e.emoji);
@@ -41,12 +47,13 @@ const Chat = () => {
           </div>
         </div>
         <div className={styles.message_own}>
-          
           <div className={styles.texts}>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi officia asperiores sequi blanditiis exercitationem labore cum omnis ex facilis debitis, veniam quod voluptate distinctio beatae repellendus ratione, rerum deserunt cupiditate?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sint incidunt alias, laboriosam molestiae quos eum aliquam facere quam consequuntur maxime placeat? Sit numquam quibusdam perferendis praesentium impedit ullam ea.
+            </p>
             <span>1 min ago</span>
           </div>
         </div>
+        <div ref={endRef}></div>  
       </div>
       <div className={styles.bottom}>
         <div className={styles.icons}>

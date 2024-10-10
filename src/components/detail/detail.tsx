@@ -50,6 +50,7 @@ const Detail = () => {
             <img src="./img/slideup.png" alt="" />
           </div>  
         <button>Block User</button>
+        <button className={styles.logout}>Log out</button>
         </div>
       </div> 
      
