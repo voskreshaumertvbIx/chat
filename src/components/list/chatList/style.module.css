@@ -61,5 +61,9 @@
 .texts{
   display: flex;
   flex-direction: column;
+  
   gap: 10px;
+}
+.lastmessage{
+  margin-left: -40px;
 }

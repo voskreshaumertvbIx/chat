@@ -6,7 +6,7 @@ import List from "./components/list/list";
 import Auth from "./components/Auth/auth";
 
 function App() {
-  const user = false;
+  const user = true;
 
   return (
     <div className="container">

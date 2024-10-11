@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import styles from './style.module.css'
+import AddUser from './addUser/addUser';
 const ChatList = () => {
   const [addVersion, setAddVersion] = useState(false);
   return (
@@ -17,10 +18,10 @@ const ChatList = () => {
         <img className={styles.avatar} src="./img/user.png" alt="" />
         <div className={styles.texts}>
           <span>James Bond</span>
-          <p>hello</p>
+          <p className={styles.lastmessage}>hello</p>
         </div>
       </div>
-      
+     {addVersion && <AddUser/>}
     </div>
   );
 }

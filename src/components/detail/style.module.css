@@ -89,7 +89,7 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
-       
+       width: 100%;
         &:hover{
           background-color: rgba(220, 20, 60, 0.796);
         }
