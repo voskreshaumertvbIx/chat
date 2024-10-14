@@ -42,6 +42,11 @@ button {
   background: rgb(37, 37, 196);
   color: white;
   cursor: pointer;
+
+  &:disabled{
+    cursor: not-allowed;
+    background-color: #1f8ef19c;
+  }
 }
 p, a{
   text-align: center;
