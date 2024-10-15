@@ -1,22 +1,34 @@
 import EmojiPicker from "emoji-picker-react";
 import styles from "./style.module.css";
 import { useEffect, useRef, useState } from "react";
-
-type EmojiObj = {
-  emoji: string;
-};
+import { onSnapshot, doc } from "firebase/firestore";
+import { db } from "../../lib/firebase";
 
 const Chat = () => {
+  const [chat, setChats] = useState();
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
 
-  const endRef = useRef<HTMLDivElement | null>(null);  
+  const endRef = useRef(null);
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: 'smooth' });
+    endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
-  const handleEmoji = (e: EmojiObj) => {
+  useEffect(() => {
+    const unSub = onSnapshot(
+      doc(db, "chats", "YRWGn0nyMxTg7bFujOqp"),
+      (res) => {
+        setChats(res.data());
+      }
+    );
+    return () => {
+      unSub();
+    };
+  }, []);
+
+  console.log(chat);
+  const handleEmoji = (e) => {
     setText((prev) => prev + e.emoji);
     setOpen(false);
   };
@@ -42,18 +54,27 @@ const Chat = () => {
         <div className={styles.message}>
           <img src="./img/user.png" alt="" />
           <div className={styles.texts}>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi officia asperiores sequi blanditiis exercitationem labore cum omnis ex facilis debitis, veniam quod voluptate distinctio beatae repellendus ratione, rerum deserunt cupiditate?</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
+              officia asperiores sequi blanditiis exercitationem labore cum
+              omnis ex facilis debitis, veniam quod voluptate distinctio beatae
+              repellendus ratione, rerum deserunt cupiditate?
+            </p>
             <span>1 min ago</span>
           </div>
         </div>
         <div className={styles.message_own}>
           <div className={styles.texts}>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sint incidunt alias, laboriosam molestiae quos eum aliquam facere quam consequuntur maxime placeat? Sit numquam quibusdam perferendis praesentium impedit ullam ea.
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum sint
+              incidunt alias, laboriosam molestiae quos eum aliquam facere quam
+              consequuntur maxime placeat? Sit numquam quibusdam perferendis
+              praesentium impedit ullam ea.
             </p>
             <span>1 min ago</span>
           </div>
         </div>
-        <div ref={endRef}></div>  
+        <div ref={endRef}></div>
       </div>
       <div className={styles.bottom}>
         <div className={styles.icons}>

@@ -1,3 +1,4 @@
+import { auth } from "../../lib/firebase";
 import styles from "./style.module.css";
 const Detail = () => {
   return (
@@ -50,7 +51,7 @@ const Detail = () => {
             <img src="./img/slideup.png" alt="" />
           </div>  
         <button className={styles.block}>Block User</button>
-        <button className={styles.logout}>Log out</button>
+        <button onClick={()=>auth.signOut()} className={styles.logout}>Log out</button>
         </div>
       </div> 
      

@@ -25,7 +25,8 @@
   border: 1px solid #ccc;
   outline: none;
   flex-grow: 1;
-  background-color:white
+  background-color:white;
+  color: black;
 }
 
 .searchButton {
@@ -38,15 +39,17 @@
 }
 
 .user {
+  margin-left: 50px;
   margin-top: 50px;
+ 
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .detail {
   display: flex;
   align-items: center;
+  justify-content: center
 }
 
 .userImage {

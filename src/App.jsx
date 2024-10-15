@@ -14,7 +14,7 @@ function App() {
   const {currentUser, isLoading, fetchUserInfo} = useUserStore();
   useEffect(()=>{
     const unSub = onAuthStateChanged(auth, (user)=>{
-     fetchUserInfo(user.uid)
+     fetchUserInfo(user?.uid)
 
     })
     return()=>unSub();
@@ -26,8 +26,8 @@ function App() {
     <div className="container">
       {currentUser ? (
         <>
-          <List />
-          <Chat />
+         <List/>
+         <Chat/>
           <Detail />
         </>
       ) : (
