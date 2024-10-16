@@ -115,6 +115,11 @@
       color: white;
       padding: 20px;
       border-radius: 12px;
+
+      &:disabled{
+        
+        cursor:not-allowed
+      }
     }
     .emoji {
       position: relative;
@@ -131,6 +136,11 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+
+      &:disabled{
+        background-color:#5182feb4;
+        cursor:not-allowed
+      }
     }
   }
 }

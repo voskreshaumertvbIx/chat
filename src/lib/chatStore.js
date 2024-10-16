@@ -3,7 +3,6 @@ import { db } from "./firebase";
 import { create } from "zustand";
 import { useUserStore } from "./userStore";
 
-
 export const useChatStore = create((set) => ({
   chatId: null,
   user: null,
@@ -19,17 +18,23 @@ export const useChatStore = create((set) => ({
         currentBlock: true,
         recieverBlock: false,
       });
-    }
-    if (user.blocked.includes(user.id)) {
+    } else if (user.blocked.includes(user.id)) {
       return set({
         chatId,
         user: null,
         currentBlock: false,
         recieverBlock: true,
       });
+    } else {
+      return set({
+        chatId,
+        user,
+        currentBlock: false,
+        recieverBlock: false,
+      });
     }
   },
-  changeBlock:()=>{
-set((state)=>({...state, recieverBlock: !state.recieverBlock}))
-  }
+  changeBlock: () => {
+    set((state) => ({ ...state, recieverBlock: !state.recieverBlock }));
+  },
 }));
